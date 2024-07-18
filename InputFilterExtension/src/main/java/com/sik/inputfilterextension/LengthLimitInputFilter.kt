@@ -8,7 +8,7 @@ import android.text.Spanned
  * @param limitLength 允许的最大字符数。
  * @param hintAction 当输入长度超过限制时调用的动作，例如显示提示。
  */
-class LengthLimitInputFilter(val limitLength: Int, val hintAction: () -> Unit = {}) : InputFilter {
+class LengthLimitInputFilter(private val limitLength: Int, private val hintAction: () -> Unit = {}) : InputFilter {
     override fun filter(
         source: CharSequence?, // 输入的文本
         start: Int,            // 输入的文本的开始位置
