@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
 import android.text.InputType
 import android.util.AttributeSet
 import android.view.Gravity
@@ -28,17 +29,19 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     /**
      * 默认显示密码的图标
      */
-    private var defaultShowPasswordIcon: Int = R.drawable.icon_visibility
+    private var defaultShowPasswordIcon: Drawable? =
+        context?.getDrawable(R.drawable.icon_visibility)
 
     /**
      * 默认隐藏密码图标
      */
-    private var defaultHidePasswordIcon: Int = R.drawable.icon_visibility_off
+    private var defaultHidePasswordIcon: Drawable? =
+        context?.getDrawable(R.drawable.icon_visibility_off)
 
     /**
      * 默认清除图标
      */
-    private var defaultClearTextIcon: Int = R.drawable.icon_close
+    private var defaultClearTextIcon: Drawable? = context?.getDrawable(R.drawable.icon_close)
 
     /**
      * 显示隐藏密码图标是否显示
@@ -82,6 +85,11 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     private var underlineStrokeWidth = 2f
 
     /**
+     * 上下文
+     */
+    private val mContext: Context? = context
+
+    /**
      * 下划线画笔
      */
     private val underLinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -122,7 +130,7 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     private fun createPasswordIcon(): ImageView {
         return ImageView(context).apply {
             layoutParams = LayoutParams(defaultIconSize, defaultIconSize)
-            setImageResource(defaultHidePasswordIcon)
+            setImageDrawable(defaultHidePasswordIcon)
         }
     }
 
@@ -133,7 +141,7 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
         return ImageView(context).apply {
             layoutParams = LayoutParams(defaultIconSize, defaultIconSize)
                 .apply { leftMargin = defaultIconSize / 3 }
-            setImageResource(defaultClearTextIcon)
+            setImageDrawable(defaultClearTextIcon)
             visibility = View.GONE
         }
     }
@@ -163,16 +171,15 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
      */
     private fun setAttrs(attrs: AttributeSet?) {
         val obtainAttributes = resources.obtainAttributes(attrs, R.styleable.EditTextEx)
-        defaultShowPasswordIcon = obtainAttributes.getInt(
-            R.styleable.EditTextEx_show_password_icon,
-            R.drawable.icon_visibility
-        )
-        defaultHidePasswordIcon = obtainAttributes.getInt(
-            R.styleable.EditTextEx_hide_password_icon,
-            R.drawable.icon_visibility_off
-        )
+        defaultShowPasswordIcon = obtainAttributes.getDrawable(
+            R.styleable.EditTextEx_show_password_icon
+        ) ?: defaultShowPasswordIcon
+        defaultHidePasswordIcon = obtainAttributes.getDrawable(
+            R.styleable.EditTextEx_hide_password_icon
+        ) ?: defaultHidePasswordIcon
         defaultClearTextIcon =
-            obtainAttributes.getInt(R.styleable.EditTextEx_clear_text_icon, R.drawable.icon_close)
+            obtainAttributes.getDrawable(R.styleable.EditTextEx_clear_text_icon)
+                ?: defaultClearTextIcon
         passwordIconShow =
             obtainAttributes.getBoolean(R.styleable.EditTextEx_password_icon_show, true)
         clearTextIconShow =
@@ -262,10 +269,10 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
                     }
                 if (currentInputType == passwordInputType) {
                     editText.inputType = visiblePasswordInputType
-                    passwordIcon.setImageResource(defaultShowPasswordIcon)
+                    passwordIcon.setImageDrawable(defaultShowPasswordIcon)
                 } else {
                     editText.inputType = passwordInputType
-                    passwordIcon.setImageResource(defaultHidePasswordIcon)
+                    passwordIcon.setImageDrawable(defaultHidePasswordIcon)
                 }
                 // Move the cursor to the end of the text
                 editText.setSelection(currentSelection)
