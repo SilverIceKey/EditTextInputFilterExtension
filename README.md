@@ -46,9 +46,11 @@ class MainActivity : AppCompatActivity() {
 
 ## 目前存在的过滤器
 
-| 过滤器名称             | 过滤器作用           |
-| ---------------------- | -------------------- |
-| LengthLimitInputFilter | 长度限制输入过滤器。 |
+| 过滤器名称             | 过滤器作用             |
+| ---------------------- | ---------------------- |
+| LengthLimitInputFilter | 长度限制输入过滤器。   |
+| NumberRangeInputFilter | 数字范围过滤器         |
+| TypeLimitInputFilter   | 输入内容类型限制过滤器 |
 
 
 
