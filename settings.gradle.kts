@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 rootProject.name = "EditTextInputFilterExtension"
 include(":app")
 include(":InputFilterExtension")
+include(":EditTextEx")

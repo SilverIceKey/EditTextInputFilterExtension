@@ -1,0 +1,10 @@
+<resources>
+    <declare-styleable name="EditTextEx">
+        <attr name="show_password_icon" format="integer" />
+        <attr name="hide_password_icon" format="integer" />
+        <attr name="clear_text_icon" format="integer" />
+        <attr name="password_icon_show" format="boolean" />
+        <attr name="clear_text_icon_show" format="boolean" />
+        <attr name="android:inputType"/>
+    </declare-styleable>
+</resources>
