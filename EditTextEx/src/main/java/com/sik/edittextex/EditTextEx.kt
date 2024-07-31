@@ -314,28 +314,28 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     /**
      * 获取文本
      */
-    fun getText(): CharSequence {
+    open fun getText(): CharSequence {
         return editText.text
     }
 
     /**
      * 配置EditText
      */
-    fun configEditText(config: EditText.() -> Unit) {
+    open fun configEditText(config: EditText.() -> Unit) {
         config(editText)
     }
 
     /**
      * 配置密码显示隐藏图标
      */
-    fun configPasswordIcon(config: ImageView.() -> Unit) {
+    open fun configPasswordIcon(config: ImageView.() -> Unit) {
         config(passwordIcon)
     }
 
     /**
      * 配置一键清除图标
      */
-    fun configClearTextIcon(config: ImageView.() -> Unit) {
+    open fun configClearTextIcon(config: ImageView.() -> Unit) {
         config(clearTextIcon)
     }
 }
