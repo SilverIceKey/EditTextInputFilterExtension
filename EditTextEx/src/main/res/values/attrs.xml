@@ -2,7 +2,7 @@
     <declare-styleable name="EditTextEx">
         <attr name="show_password_icon" format="reference" />
         <attr name="hide_password_icon" format="reference" />
-        <attr name="clear_text_icon" format="integer" />
+        <attr name="clear_text_icon" format="reference" />
         <attr name="password_icon_show" format="boolean" />
         <attr name="clear_text_icon_show" format="boolean" />
         <attr name="underline_stroke_width" format="float" />
