@@ -5,6 +5,7 @@
         <attr name="clear_text_icon" format="integer" />
         <attr name="password_icon_show" format="boolean" />
         <attr name="clear_text_icon_show" format="boolean" />
-        <attr name="android:inputType"/>
+        <attr name="underline_stroke_width" format="float" />
+        <attr name="android:inputType" />
     </declare-styleable>
 </resources>

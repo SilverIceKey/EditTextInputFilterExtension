@@ -77,15 +77,21 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     private var contentHeight = 0
 
     /**
+     * 下划线宽度
+     */
+    private var underlineStrokeWidth = 2f
+
+    /**
      * 下划线画笔
      */
     private val underLinePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        strokeWidth = 2f
+        strokeWidth = underlineStrokeWidth
         color = Color.BLACK
     }
 
     init {
         setAttrs(attrs)
+        underLinePaint.strokeWidth = underlineStrokeWidth
         editText = createEditText()
         passwordIcon = createPasswordIcon()
         clearTextIcon = createClearTextIcon()
@@ -171,6 +177,8 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
             obtainAttributes.getBoolean(R.styleable.EditTextEx_password_icon_show, true)
         clearTextIconShow =
             obtainAttributes.getBoolean(R.styleable.EditTextEx_clear_text_icon_show, true)
+        underlineStrokeWidth =
+            obtainAttributes.getFloat(R.styleable.EditTextEx_underline_stroke_width, 2f)
         inputType = obtainAttributes.getInt(
             R.styleable.EditTextEx_android_inputType,
             InputType.TYPE_CLASS_TEXT
@@ -312,30 +320,34 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     }
 
     /**
-     * 获取文本
+     * EditText文本
      */
-    open fun getText(): CharSequence {
-        return editText.text
-    }
+    var text: String
+        get() {
+            return editText.text?.toString() ?: ""
+        }
+        set(value) {
+            editText.setText(value)
+        }
 
     /**
      * 配置EditText
      */
-    open fun configEditText(config: EditText.() -> Unit) {
+    fun configEditText(config: EditText.() -> Unit) {
         config(editText)
     }
 
     /**
      * 配置密码显示隐藏图标
      */
-    open fun configPasswordIcon(config: ImageView.() -> Unit) {
+    fun configPasswordIcon(config: ImageView.() -> Unit) {
         config(passwordIcon)
     }
 
     /**
      * 配置一键清除图标
      */
-    open fun configClearTextIcon(config: ImageView.() -> Unit) {
+    fun configClearTextIcon(config: ImageView.() -> Unit) {
         config(clearTextIcon)
     }
 }
