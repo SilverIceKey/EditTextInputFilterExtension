@@ -85,6 +85,11 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     private var underlineStrokeWidth = 2f
 
     /**
+     * 下划线颜色
+     */
+    private var underlineColor = Color.BLACK
+
+    /**
      * 上下文
      */
     private val mContext: Context? = context
@@ -100,6 +105,7 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
     init {
         setAttrs(attrs)
         underLinePaint.strokeWidth = underlineStrokeWidth
+        underLinePaint.color = underlineColor
         editText = createEditText()
         passwordIcon = createPasswordIcon()
         clearTextIcon = createClearTextIcon()
@@ -186,6 +192,8 @@ class EditTextEx(context: Context?, attrs: AttributeSet?) : LinearLayout(context
             obtainAttributes.getBoolean(R.styleable.EditTextEx_clear_text_icon_show, true)
         underlineStrokeWidth =
             obtainAttributes.getFloat(R.styleable.EditTextEx_underline_stroke_width, 2f)
+        underlineColor =
+            obtainAttributes.getColor(R.styleable.EditTextEx_underline_color, Color.BLACK);
         inputType = obtainAttributes.getInt(
             R.styleable.EditTextEx_android_inputType,
             InputType.TYPE_CLASS_TEXT

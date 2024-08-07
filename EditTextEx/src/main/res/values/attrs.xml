@@ -6,6 +6,7 @@
         <attr name="password_icon_show" format="boolean" />
         <attr name="clear_text_icon_show" format="boolean" />
         <attr name="underline_stroke_width" format="float" />
+        <attr name="underline_color" format="reference|color" />
         <attr name="android:inputType" />
     </declare-styleable>
 </resources>
