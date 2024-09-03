@@ -4,6 +4,8 @@
 
 `EditTextInputFilterExtension` 是一个为Android `EditText` 控件提供扩展输入过滤功能的库。这个库可以帮助开发者快速实现各种输入限制，如限制输入长度、格式、禁止输入特定字符等。
 
+本库还内置了一个EditTextEx控件，具体可以查看[README](./EditTextEx/README.md)
+
 ## 特性
 
 - **限制输入字符长度**
