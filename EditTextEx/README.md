@@ -24,6 +24,7 @@
     app:underline_stroke_width="2dp"
     app:password_icon_show="true"
     app:clear_text_icon_show="true"
+    app:EditTextValue="@={yourViewModel.text}"
     app:show_password_icon="@drawable/icon_visibility"
     app:hide_password_icon="@drawable/icon_visibility_off"
     app:clear_text_icon="@drawable/icon_close" />
@@ -33,8 +34,8 @@
 
 在代码中初始化和配置 `EditTextEx`：
 
-```
-kotlin复制代码val editTextEx = findViewById<EditTextEx>(R.id.editTextEx)
+```kotlin
+val editTextEx = findViewById<EditTextEx>(R.id.editTextEx)
 
 // 设置初始文本
 editTextEx.text = "Hello, World!"
@@ -67,3 +68,4 @@ editTextEx.configClearTextIcon {
 - `app:show_password_icon`：设置显示密码图标的 Drawable 资源。
 - `app:hide_password_icon`：设置隐藏密码图标的 Drawable 资源。
 - `app:clear_text_icon`：设置清除文本图标的 Drawable 资源。
+- `app:EditTextValue`：设置文本支持双向绑定
